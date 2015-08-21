@@ -32,14 +32,37 @@ public class Partition {
 	public int partition1(int[] array, int start, int end) {
 		int partition = -1;
 		if (array != null && start >= 0 && end >= 0) {
-			int index=start;
-			
+			int pivot = array[start];
+			int small = start;
+			for (int i = start + 1; i <= end; i++) {
+				if (array[i] < pivot) {
+					small++;
+					if (small != i) {
+						swap(array, small, i);
+					}
+				}
+			}
+			swap(array, small, start);
+			partition = small;
 		}
+		return partition;
 	}
 
 	private void swap(int[] array, int a, int b) {
 		int temp = array[a];
 		array[a] = array[b];
 		array[b] = temp;
+	}
+
+	public static void main(String[] args) {
+		Partition partition = new Partition();
+
+		int[] array = { 4, 5, 10, 3 };
+		int x = partition.partition(array, 0, array.length - 1);
+		int[] array1 = { 4, 5, 10, 3 };
+		int y = partition.partition1(array1, 0, array1.length - 1);
+		System.out.println(x);
+		System.out.println(y);
+
 	}
 }
