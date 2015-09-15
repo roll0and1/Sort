@@ -11,7 +11,7 @@ public class Partition {
 				// left的范围是0到倒数第二位 若left=end ++left会越界
 				while (left < end && array[++left] < index)
 					;
-				// right向左运动到left处会停止 因start是枢值
+				// right向左运动到left处会停止 因为start是枢值
 
 				while (array[--right] > index)
 					;
@@ -37,7 +37,7 @@ public class Partition {
 			for (int i = start + 1; i <= end; i++) {
 				if (array[i] < pivot) {
 					small++;
-					if (small != i) {
+					if (small != i) {// 若当前遍历元素坐标与small不相等则交换位置
 						swap(array, small, i);
 					}
 				}
